@@ -1,12 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 
-ReactDOM.render(
-  <>
-    <App />
-  </>,
-  document.getElementById('root')
-);
+const API_URL = "http://localhost:4000";
 
+
+
+const Apis = {
+  //product api
+  GetProductById: `${API_URL}/api/product/getWebProductById?id=`,
+  GetAllGroceryStaple: `${API_URL}/api/product/getAllGroceryStaple`,
+  GetAllProductList: `${API_URL}/api/product/list/`,
+
+
+};
+export { API_URL, Apis };
