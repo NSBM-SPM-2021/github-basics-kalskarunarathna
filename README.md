@@ -1,107 +1,396 @@
-# :wave: The Basics of GitHub 
+# yargs-parser
 
-## 🤓 Course overview and learning outcomes 
-
-The goal of this course is to give you a brief introduction to GitHub. We’ll also provide you with materials for further learning and a few ideas to get you started on our platform. 🚀
-
-## :octocat: Git and GitHub
-
-Git is a **distributed Version Control System (VCS)**, which means it is a useful tool for easily tracking changes to your code, collaborating, and sharing. With Git you can track the changes you make to your project so you always have a record of what you’ve worked on and can easily revert back to an older version if need be. It also makes working with others easier—groups of people can work together on the same project and merge their changes into one final source!
-
-GitHub is a way to use the same power of Git all online with an easy-to-use interface. It’s used across the software world and beyond to collaborate and maintain the history of projects.
-
-GitHub is home to some of the most advanced technologies in the world. Whether you're visualizing data or building a new game, there's a whole community and set of tools on GitHub that can get you to the next step. This course starts with the basics of GitHub, but we'll dig into the rest later.
-
-## :octocat: Understanding the GitHub flow 
-
-The GitHub flow is a lightweight workflow that allows you to experiment and collaborate on your projects easily, without the risk of losing your previous work.
-
-### Repositories
-
-A repository is where your project work happens--think of it as your project folder. It contains all of your project’s files and revision history.  You can work within a repository alone or invite others to collaborate with you on those files.
-
-### Cloning 
-
-When a repository is created with GitHub, it’s stored remotely in the ☁️. You can clone a repository to create a local copy on your computer and then use Git to sync the two. This makes it easier to fix issues, add or remove files, and push larger commits. You can also use the editing tool of your choice as opposed to the GitHub UI. Cloning a repository also pulls down all the repository data that GitHub has at that point in time, including all versions of every file and folder for the project! This can be helpful if you experiment with your project and then realize you liked a previous version more. 
-To learn more about cloning, read ["Cloning a Repository"](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/cloning-a-repository). 
-
-### Committing and pushing
-**Committing** and **pushing** are how you can add the changes you made on your local machine to the remote repository in GitHub. That way your instructor and/or teammates can see your latest work when you’re ready to share it. You can make a commit when you have made changes to your project that you want to “checkpoint.” You can also add a helpful **commit message** to remind yourself or your teammates what work you did (e.g. “Added a README with information about our project”).
-
-Once you have a commit or multiple commits that you’re ready to add to your repository, you can use the push command to add those changes to your remote repository. Committing and pushing may feel new at first, but we promise you’ll get used to it 🙂
-
-## 💻 GitHub terms to know 
-
-### Repositories 
-We mentioned repositories already, they are where your project work happens, but let’s talk a bit more about the details of them! As you work more on GitHub you will have many repositories which may feel confusing at first. Fortunately, your ["GitHub dashboard"](https://docs.github.com/en/github/setting-up-and-managing-your-github-user-account/about-your-personal-dashboard) helps to easily navigate to your repositories and see useful information about them. Make sure you’re logged in to see it!
-
-Repositories also contain **README**s. You can add a README file to your repository to tell other people why your project is useful, what they can do with your project, and how they can use it. We are using this README to communicate how to learn Git and GitHub with you. 😄 
-To learn more about repositories read ["Creating, Cloning, and Archiving Repositories](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-repositories) and ["About README's"](https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/about-readmes). 
-
-### Branches
-You can use branches on GitHub to isolate work that you do not want merged into your final project just yet. Branches allow you to develop features, fix bugs, or safely experiment with new ideas in a contained area of your repository. Typically, you might create a new branch from the default branch of your repository—main. This makes a new working copy of your repository for you to experiment with. Once your new changes have been reviewed by a teammate, or you are satisfied with them, you can merge your changes into the default branch of your repository.
-To learn more about branching, read ["About Branches"](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-branches).
-
-### Forks
-A fork is another way to copy a repository, but is usually used when you want to contribute to someone else’s project. Forking a repository allows you to freely experiment with changes without affecting the original project and is very popular when contributing to open source software projects!
-To learn more about forking, read ["Fork a repo"](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
-
-### Pull requests
-When working with branches, you can use a pull request to tell others about the changes you want to make and ask for their feedback. Once a pull request is opened, you can discuss and review the potential changes with collaborators and add more changes if need be. You can add specific people as reviewers of your pull request which shows you want their feedback on your changes! Once a pull request is ready-to-go, it can be merged into your main branch.
-To learn more about pull requests, read ["About Pull Requests"](https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests). 
+[![Build Status](https://travis-ci.org/yargs/yargs-parser.svg)](https://travis-ci.org/yargs/yargs-parser)
+[![Coverage Status](https://coveralls.io/repos/yargs/yargs-parser/badge.svg?branch=)](https://coveralls.io/r/yargs/yargs-parser?branch=master)
+[![NPM version](https://img.shields.io/npm/v/yargs-parser.svg)](https://www.npmjs.com/package/yargs-parser)
+[![Standard Version](https://img.shields.io/badge/release-standard%20version-brightgreen.svg)](https://github.com/conventional-changelog/standard-version)
 
 
-### Issues
-Issues are a way to track enhancements, tasks, or bugs for your work on GitHub. Issues are a great way to keep track of all the tasks you want to work on for your project and let others know what you plan to work on. You can also use issues to tell a favorite open source project about a bug you found or a feature you think would be great to add!
+The mighty option parser used by [yargs](https://github.com/yargs/yargs).
 
-For larger projects, you can keep track of many issues on a project board. GitHub Projects help you organize and prioritize your work and you can read more about them [in this "About Project boards document](https://docs.github.com/en/github/managing-your-work-on-github/about-project-boards). You likely won’t need a project board for your assignments, but once you move on to even bigger projects, they’re a great way to organize your team’s work!
-You can also link together pull requests and issues to show that a fix is in progress and to automatically close the issue when someone merges the pull request.
-To learn more about issues and linking them to your pull requests, read ["About Issues"](https://docs.github.com/en/github/managing-your-work-on-github/about-issues). 
+visit the [yargs website](http://yargs.js.org/) for more examples, and thorough usage instructions.
 
-### Your user profile
+<img width="250" src="https://raw.githubusercontent.com/yargs/yargs-parser/master/yargs-logo.png">
 
-Your profile page tells people the story of your work through the repositories you're interested in, the contributions you've made, and the conversations you've had. You can also give the world a unique view into who you are with your profile README. You can use your profile to let future employers know all about you! 
-To learn more about your user profile and adding and updating your profile README, read ["Managing Your Profile README"](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme). 
+## Example
 
-### Using markdown on GitHub 
+```sh
+npm i yargs-parser --save
+```
 
-You might have noticed already, but you can add some fun styling to your issues, pull requests, and files. ["Markdown"](https://guides.github.com/features/mastering-markdown/) is an easy way to style your issues, pull requests, and files with some simple syntax. This can be helpful to organize your information and make it easier for others to read. You can also drop in gifs and images to help convey your point!
-To learn more about using GitHub’s flavor of markdown, read ["Basic Writing and Formatting Syntax"](https://docs.github.com/en/github/writing-on-github/basic-writing-and-formatting-syntax). 
+```js
+var argv = require('yargs-parser')(process.argv.slice(2))
+console.log(argv)
+```
 
-### Engaging with the GitHub community
+```sh
+node example.js --foo=33 --bar hello
+{ _: [], foo: 33, bar: 'hello' }
+```
 
-The GitHub community is vast. There are many types of people who use GitHub in their day to day—students like you, professional developers, hobbyists working on open source projects, and explorers who are just jumping into the world of software development on their own. There are many ways you can interact with the larger GitHub community, but here are three places where you can start. 
+_or parse a string!_
 
-#### Starring repositories 
+```js
+var argv = require('./')('--foo=99 --bar=33')
+console.log(argv)
+```
 
-If you find a repository interesting or you want to keep track of it, star it! When you star a repository it’s also used as a signal to surface better recommendations on github.com/explore. If you’d like to get back to your starred repositories you can do so via your user profile. 
-To learn  more about starring repositories, read ["Saving Repositories with Stars"](https://docs.github.com/en/github/getting-started-with-github/saving-repositories-with-stars). 
+```sh
+{ _: [], foo: 99, bar: 33 }
+```
 
-#### Following users 
+Convert an array of mixed types before passing to `yargs-parser`:
 
-You can follow people on GitHub to receive notifications about their activity and discover projects in their communities. When you follow a user, their public GitHub activity will show up on your dashboard so you can see all the cool things they are working on. 
-To learn more about following users, read ["Following People"](https://docs.github.com/en/github/getting-started-with-github/following-people).
+```js
+var parse = require('yargs-parser')
+parse(['-f', 11, '--zoom', 55].join(' '))   // <-- array to string
+parse(['-f', 11, '--zoom', 55].map(String)) // <-- array of strings
+```
 
-#### Browsing GitHub Explore 
+## API
 
-GitHub Explore is a great place to do just that … explore :smile: You can find new projects, events, and developers to interact with.
+### require('yargs-parser')(args, opts={})
 
-You can check out the GitHub Explore website [at github.com/explore](https://github.com/explore). The more you intereact with GitHub the more tailored your Explore view will be. 
+Parses command line arguments returning a simple mapping of keys and values.
 
-## 📝 Optional next steps 
+**expects:**
 
-* Open a pull request and let your teacher know that you’ve finished this course.  
-* Create a new markdown file in this repository. Let them know what you learned and what you are still confused about! Experiment with different styles!
-* Create your profile README. Let the world know a little bit more about you! What are you interested in learning? What are you working on? What's your favorite hobby? Learn more about creating your profile README in the document, ["Managing Your Profile README"](https://docs.github.com/en/github/setting-up-and-managing-your-github-profile/managing-your-profile-readme).
-* Go to your user dashboard and create a new repository. Experiment with the features within that repository to familiarize yourself with them. 
-* [Let us know what you liked or didn’t like about the content of this course](https://support.github.com/contact/education). What would you like to see more of? What would be interesting or helpful to your learning journey? 
+* `args`: a string or array of strings representing the options to parse.
+* `opts`: provide a set of hints indicating how `args` should be parsed:
+  * `opts.alias`: an object representing the set of aliases for a key: `{alias: {foo: ['f']}}`.
+  * `opts.array`: indicate that keys should be parsed as an array: `{array: ['foo', 'bar']}`.<br>
+    Indicate that keys should be parsed as an array and coerced to booleans / numbers:<br>
+    `{array: [{ key: 'foo', boolean: true }, {key: 'bar', number: true}]}`.
+  * `opts.boolean`: arguments should be parsed as booleans: `{boolean: ['x', 'y']}`.
+  * `opts.coerce`: provide a custom synchronous function that returns a coerced value from the argument provided
+    (or throws an error). For arrays the function is called only once for the entire array:<br>
+    `{coerce: {foo: function (arg) {return modifiedArg}}}`.
+  * `opts.config`: indicate a key that represents a path to a configuration file (this file will be loaded and parsed).
+  * `opts.configObjects`: configuration objects to parse, their properties will be set as arguments:<br>
+    `{configObjects: [{'x': 5, 'y': 33}, {'z': 44}]}`.
+  * `opts.configuration`: provide configuration options to the yargs-parser (see: [configuration](#configuration)).
+  * `opts.count`: indicate a key that should be used as a counter, e.g., `-vvv` = `{v: 3}`.
+  * `opts.default`: provide default values for keys: `{default: {x: 33, y: 'hello world!'}}`.
+  * `opts.envPrefix`: environment variables (`process.env`) with the prefix provided should be parsed.
+  * `opts.narg`: specify that a key requires `n` arguments: `{narg: {x: 2}}`.
+  * `opts.normalize`: `path.normalize()` will be applied to values set to this key.
+  * `opts.number`: keys should be treated as numbers.
+  * `opts.string`: keys should be treated as strings (even if they resemble a number `-x 33`).
 
-## 📚  Resources 
-* [A short video explaining what GitHub is](https://www.youtube.com/watch?v=w3jLJU7DT5E&feature=youtu.be) 
-* [Git and GitHub learning resources](https://docs.github.com/en/github/getting-started-with-github/git-and-github-learning-resources) 
-* [Understanding the GitHub flow](https://guides.github.com/introduction/flow/)
-* [How to use GitHub branches](https://www.youtube.com/watch?v=H5GJfcp3p4Q&feature=youtu.be)
-* [Interactive Git training materials](https://githubtraining.github.io/training-manual/#/01_getting_ready_for_class)
-* [GitHub's Learning Lab](https://lab.github.com/)
-* [Education community forum](https://education.github.community/)
-* [GitHub community forum](https://github.community/)
+**returns:**
+
+* `obj`: an object representing the parsed value of `args`
+  * `key/value`: key value pairs for each argument and their aliases.
+  * `_`: an array representing the positional arguments.
+  * [optional] `--`:  an array with arguments after the end-of-options flag `--`.
+
+### require('yargs-parser').detailed(args, opts={})
+
+Parses a command line string, returning detailed information required by the
+yargs engine.
+
+**expects:**
+
+* `args`: a string or array of strings representing options to parse.
+* `opts`: provide a set of hints indicating how `args`, inputs are identical to `require('yargs-parser')(args, opts={})`.
+
+**returns:**
+
+* `argv`: an object representing the parsed value of `args`
+  * `key/value`: key value pairs for each argument and their aliases.
+  * `_`: an array representing the positional arguments.
+* `error`: populated with an error object if an exception occurred during parsing.
+* `aliases`: the inferred list of aliases built by combining lists in `opts.alias`.
+* `newAliases`: any new aliases added via camel-case expansion.
+* `configuration`: the configuration loaded from the `yargs` stanza in package.json.
+
+<a name="configuration"></a>
+
+### Configuration
+
+The yargs-parser applies several automated transformations on the keys provided
+in `args`. These features can be turned on and off using the `configuration` field
+of `opts`.
+
+```js
+var parsed = parser(['--no-dice'], {
+  configuration: {
+    'boolean-negation': false
+  }
+})
+```
+
+### short option groups
+
+* default: `true`.
+* key: `short-option-groups`.
+
+Should a group of short-options be treated as boolean flags?
+
+```sh
+node example.js -abc
+{ _: [], a: true, b: true, c: true }
+```
+
+_if disabled:_
+
+```sh
+node example.js -abc
+{ _: [], abc: true }
+```
+
+### camel-case expansion
+
+* default: `true`.
+* key: `camel-case-expansion`.
+
+Should hyphenated arguments be expanded into camel-case aliases?
+
+```sh
+node example.js --foo-bar
+{ _: [], 'foo-bar': true, fooBar: true }
+```
+
+_if disabled:_
+
+```sh
+node example.js --foo-bar
+{ _: [], 'foo-bar': true }
+```
+
+### dot-notation
+
+* default: `true`
+* key: `dot-notation`
+
+Should keys that contain `.` be treated as objects?
+
+```sh
+node example.js --foo.bar
+{ _: [], foo: { bar: true } }
+```
+
+_if disabled:_
+
+```sh
+node example.js --foo.bar
+{ _: [], "foo.bar": true }
+```
+
+### parse numbers
+
+* default: `true`
+* key: `parse-numbers`
+
+Should keys that look like numbers be treated as such?
+
+```sh
+node example.js --foo=99.3
+{ _: [], foo: 99.3 }
+```
+
+_if disabled:_
+
+```sh
+node example.js --foo=99.3
+{ _: [], foo: "99.3" }
+```
+
+### boolean negation
+
+* default: `true`
+* key: `boolean-negation`
+
+Should variables prefixed with `--no` be treated as negations?
+
+```sh
+node example.js --no-foo
+{ _: [], foo: false }
+```
+
+_if disabled:_
+
+```sh
+node example.js --no-foo
+{ _: [], "no-foo": true }
+```
+
+### combine arrays
+
+* default: `false`
+* key: `combine-arrays`
+
+Should arrays be combined when provided by both command line arguments and
+a configuration file.
+
+### duplicate arguments array
+
+* default: `true`
+* key: `duplicate-arguments-array`
+
+Should arguments be coerced into an array when duplicated:
+
+```sh
+node example.js -x 1 -x 2
+{ _: [], x: [1, 2] }
+```
+
+_if disabled:_
+
+```sh
+node example.js -x 1 -x 2
+{ _: [], x: 2 }
+```
+
+### flatten duplicate arrays
+
+* default: `true`
+* key: `flatten-duplicate-arrays`
+
+Should array arguments be coerced into a single array when duplicated:
+
+```sh
+node example.js -x 1 2 -x 3 4
+{ _: [], x: [1, 2, 3, 4] }
+```
+
+_if disabled:_
+
+```sh
+node example.js -x 1 2 -x 3 4
+{ _: [], x: [[1, 2], [3, 4]] }
+```
+
+### negation prefix
+
+* default: `no-`
+* key: `negation-prefix`
+
+The prefix to use for negated boolean variables.
+
+```sh
+node example.js --no-foo
+{ _: [], foo: false }
+```
+
+_if set to `quux`:_
+
+```sh
+node example.js --quuxfoo
+{ _: [], foo: false }
+```
+
+### populate --
+
+* default: `false`.
+* key: `populate--`
+
+Should unparsed flags be stored in `--` or `_`.
+
+_If disabled:_
+
+```sh
+node example.js a -b -- x y
+{ _: [ 'a', 'x', 'y' ], b: true }
+```
+
+_If enabled:_
+
+```sh
+node example.js a -b -- x y
+{ _: [ 'a' ], '--': [ 'x', 'y' ], b: true }
+```
+
+### set placeholder key
+
+* default: `false`.
+* key: `set-placeholder-key`.
+
+Should a placeholder be added for keys not set via the corresponding CLI argument?
+
+_If disabled:_
+
+```sh
+node example.js -a 1 -c 2
+{ _: [], a: 1, c: 2 }
+```
+
+_If enabled:_
+
+```sh
+node example.js -a 1 -c 2
+{ _: [], a: 1, b: undefined, c: 2 }
+```
+
+### halt at non-option
+
+* default: `false`.
+* key: `halt-at-non-option`.
+
+Should parsing stop at the first positional argument? This is similar to how e.g. `ssh` parses its command line.
+
+_If disabled:_
+
+```sh
+node example.js -a run b -x y
+{ _: [ 'b' ], a: 'run', x: 'y' }
+```
+
+_If enabled:_
+
+```sh
+node example.js -a run b -x y
+{ _: [ 'b', '-x', 'y' ], a: 'run' }
+```
+
+### strip aliased
+
+* default: `false`
+* key: `strip-aliased`
+
+Should aliases be removed before returning results?
+
+_If disabled:_
+
+```sh
+node example.js --test-field 1
+{ _: [], 'test-field': 1, testField: 1, 'test-alias': 1, testAlias: 1 }
+```
+
+_If enabled:_
+
+```sh
+node example.js --test-field 1
+{ _: [], 'test-field': 1, testField: 1 }
+```
+
+### strip dashed
+
+* default: `false`
+* key: `strip-dashed`
+
+Should dashed keys be removed before returning results?  This option has no effect if
+`camel-case-exansion` is disabled.
+
+_If disabled:_
+
+```sh
+node example.js --test-field 1
+{ _: [], 'test-field': 1, testField: 1 }
+```
+
+_If enabled:_
+
+```sh
+node example.js --test-field 1
+{ _: [], testField: 1 }
+```
+
+## Special Thanks
+
+The yargs project evolves from optimist and minimist. It owes its
+existence to a lot of James Halliday's hard work. Thanks [substack](https://github.com/substack) **beep** **boop** \o/
+
+## License
+
+ISC
