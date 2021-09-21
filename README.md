@@ -1,126 +1,100 @@
-# Acorn AST walker
+address
+=======
 
-An abstract syntax tree walker for the
-[ESTree](https://github.com/estree/estree) format.
+[![NPM version][npm-image]][npm-url]
+[![build status][travis-image]][travis-url]
+[![Test coverage][coveralls-image]][coveralls-url]
+[![Gittip][gittip-image]][gittip-url]
+[![David deps][david-image]][david-url]
+[![npm download][download-image]][download-url]
 
-## Community
+[npm-image]: https://img.shields.io/npm/v/address.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/address
+[travis-image]: https://img.shields.io/travis/node-modules/address.svg?style=flat-square
+[travis-url]: https://travis-ci.org/node-modules/address
+[coveralls-image]: https://img.shields.io/coveralls/node-modules/address.svg?style=flat-square
+[coveralls-url]: https://coveralls.io/r/node-modules/address?branch=master
+[gittip-image]: https://img.shields.io/gittip/fengmk2.svg?style=flat-square
+[gittip-url]: https://www.gittip.com/fengmk2/
+[david-image]: https://img.shields.io/david/node-modules/address.svg?style=flat-square
+[david-url]: https://david-dm.org/node-modules/address
+[download-image]: https://img.shields.io/npm/dm/address.svg?style=flat-square
+[download-url]: https://npmjs.org/package/address
 
-Acorn is open source software released under an
-[MIT license](https://github.com/acornjs/acorn/blob/master/acorn-walk/LICENSE).
+Get current machine IP, MAC and DNS servers.
 
-You are welcome to
-[report bugs](https://github.com/acornjs/acorn/issues) or create pull
-requests on [github](https://github.com/acornjs/acorn). For questions
-and discussion, please use the
-[Tern discussion forum](https://discuss.ternjs.net).
+DNS servers receive from `/etc/resolv.conf`.
 
-## Installation
+## Install
 
-The easiest way to install acorn is from [`npm`](https://www.npmjs.com/):
-
-```sh
-npm install acorn-walk
+```bash
+$ npm install address
 ```
 
-Alternately, you can download the source and build acorn yourself:
+## Usage
 
-```sh
-git clone https://github.com/acornjs/acorn.git
-cd acorn
-npm install
-```
-
-## Interface
-
-An algorithm for recursing through a syntax tree is stored as an
-object, with a property for each tree node type holding a function
-that will recurse through such a node. There are several ways to run
-such a walker.
-
-**simple**`(node, visitors, base, state)` does a 'simple' walk over a
-tree. `node` should be the AST node to walk, and `visitors` an object
-with properties whose names correspond to node types in the [ESTree
-spec](https://github.com/estree/estree). The properties should contain
-functions that will be called with the node object and, if applicable
-the state at that point. The last two arguments are optional. `base`
-is a walker algorithm, and `state` is a start state. The default
-walker will simply visit all statements and expressions and not
-produce a meaningful state. (An example of a use of state is to track
-scope at each point in the tree.)
+Get IP is sync and get MAC is async for now.
 
 ```js
-const acorn = require("acorn")
-const walk = require("acorn-walk")
+var address = require('address');
 
-walk.simple(acorn.parse("let x = 10"), {
-  Literal(node) {
-    console.log(`Found a literal: ${node.value}`)
-  }
-})
+// default interface 'eth' on linux, 'en' on osx.
+address.ip();   // '192.168.0.2'
+address.ipv6(); // 'fe80::7aca:39ff:feb0:e67d'
+address.mac(function (err, addr) {
+  console.log(addr); // '78:ca:39:b0:e6:7d'
+});
+
+// local loopback
+address.ip('lo'); // '127.0.0.1'
+
+// vboxnet MAC
+address.mac('vboxnet', function (err, addr) {
+  console.log(addr); // '0a:00:27:00:00:00'
+});
 ```
 
-**ancestor**`(node, visitors, base, state)` does a 'simple' walk over
-a tree, building up an array of ancestor nodes (including the current node)
-and passing the array to the callbacks as a third parameter.
+### Get all addresses: IPv4, IPv6 and MAC
 
 ```js
-const acorn = require("acorn")
-const walk = require("acorn-walk")
+address(function (err, addrs) {
+  console.log(addrs.ip, addrs.ipv6, addrs.mac);
+  // '192.168.0.2', 'fe80::7aca:39ff:feb0:e67d', '78:ca:39:b0:e6:7d'
+});
 
-walk.ancestor(acorn.parse("foo('hi')"), {
-  Literal(_, ancestors) {
-    console.log("This literal's ancestors are:", ancestors.map(n => n.type))
-  }
-})
+address('vboxnet', function (err, addrs) {
+  console.log(addrs.ip, addrs.ipv6, addrs.mac);
+  // '192.168.56.1', null, '0a:00:27:00:00:00'
+});
 ```
 
-**recursive**`(node, state, functions, base)` does a 'recursive'
-walk, where the walker functions are responsible for continuing the
-walk on the child nodes of their target node. `state` is the start
-state, and `functions` should contain an object that maps node types
-to walker functions. Such functions are called with `(node, state, c)`
-arguments, and can cause the walk to continue on a sub-node by calling
-the `c` argument on it with `(node, state)` arguments. The optional
-`base` argument provides the fallback walker functions for node types
-that aren't handled in the `functions` object. If not given, the
-default walkers will be used.
-
-**make**`(functions, base)` builds a new walker object by using the
-walker functions in `functions` and filling in the missing ones by
-taking defaults from `base`.
-
-**full**`(node, callback, base, state)` does a 'full' walk over a
-tree, calling the callback with the arguments (node, state, type) for
-each node
-
-**fullAncestor**`(node, callback, base, state)` does a 'full' walk
-over a tree, building up an array of ancestor nodes (including the
-current node) and passing the array to the callbacks as a third
-parameter.
+### Get an interface info with family
 
 ```js
-const acorn = require("acorn")
-const walk = require("acorn-walk")
-
-walk.full(acorn.parse("1 + 1"), node => {
-  console.log(`There's a ${node.type} node at ${node.ch}`)
-})
+address.interface('IPv4', 'eth1');
+// { address: '192.168.1.1', family: 'IPv4', mac: '78:ca:39:b0:e6:7d' }
 ```
 
-**findNodeAt**`(node, start, end, test, base, state)` tries to locate
-a node in a tree at the given start and/or end offsets, which
-satisfies the predicate `test`. `start` and `end` can be either `null`
-(as wildcard) or a number. `test` may be a string (indicating a node
-type) or a function that takes `(nodeType, node)` arguments and
-returns a boolean indicating whether this node is interesting. `base`
-and `state` are optional, and can be used to specify a custom walker.
-Nodes are tested from inner to outer, so if two nodes match the
-boundaries, the inner one will be preferred.
+### Get DNS servers
 
-**findNodeAround**`(node, pos, test, base, state)` is a lot like
-`findNodeAt`, but will match any node that exists 'around' (spanning)
-the given position.
+```js
+address.dns(function (err, addrs) {
+  console.log(addrs);
+  // ['10.13.2.1', '10.13.2.6']
+});
+```
 
-**findNodeAfter**`(node, pos, test, base, state)` is similar to
-`findNodeAround`, but will match all nodes *after* the given position
-(testing outer nodes before inner nodes).
+## benchmark
+
+run `$ npm run benchmark`
+
+```
+18,929 op/s » #ip
+17,622 op/s » #ipv6
+16,347 op/s » #mac
+11,906 op/s » #dns
+```
+
+## License
+
+[MIT](LICENSE.txt)
