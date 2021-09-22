@@ -1,84 +1,145 @@
 {
   "_args": [
     [
-      "address@1.1.2",
+      "ajv@6.12.3",
       "C:\\Users\\Sudesh Niroshan\\Desktop\\React Ecomerce application\\grocery-demo-website-master"
     ]
   ],
-  "_from": "address@1.1.2",
-  "_id": "address@1.1.2",
+  "_from": "ajv@6.12.3",
+  "_id": "ajv@6.12.3",
   "_inBundle": false,
-  "_integrity": "sha512-aT6camzM4xEA54YVJYSqxz1kv4IHnQZRtThJJHhUMRExaU5spC7jX5ugSwTaTgJliIgs4VhZOk7htClvQ/LmRA==",
-  "_location": "/address",
+  "_integrity": "sha512-4K0cK3L1hsqk9xIb2z9vs/XU+PGJZ9PNpJRDS9YLzmNdX6jmVPfamLvTJr0aDAusnHyCHO6MjzlkAsgtqp9teA==",
+  "_location": "/ajv",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "address@1.1.2",
-    "name": "address",
-    "escapedName": "address",
-    "rawSpec": "1.1.2",
+    "raw": "ajv@6.12.3",
+    "name": "ajv",
+    "escapedName": "ajv",
+    "rawSpec": "6.12.3",
     "saveSpec": null,
-    "fetchSpec": "1.1.2"
+    "fetchSpec": "6.12.3"
   },
   "_requiredBy": [
-    "/detect-port-alt",
-    "/react-dev-utils"
+    "/eslint",
+    "/har-validator",
+    "/mini-css-extract-plugin/schema-utils",
+    "/postcss-loader/schema-utils",
+    "/schema-utils",
+    "/style-loader/schema-utils",
+    "/table",
+    "/webpack",
+    "/webpack-dev-server/schema-utils",
+    "/webpack/schema-utils"
   ],
-  "_resolved": "https://registry.npmjs.org/address/-/address-1.1.2.tgz",
-  "_spec": "1.1.2",
+  "_resolved": "https://registry.npmjs.org/ajv/-/ajv-6.12.3.tgz",
+  "_spec": "6.12.3",
   "_where": "C:\\Users\\Sudesh Niroshan\\Desktop\\React Ecomerce application\\grocery-demo-website-master",
   "author": {
-    "name": "fengmk2",
-    "email": "fengmk2@gmail.com"
+    "name": "Evgeny Poberezkin"
   },
   "bugs": {
-    "url": "https://github.com/node-modules/address/issues"
+    "url": "https://github.com/ajv-validator/ajv/issues"
   },
-  "dependencies": {},
-  "description": "Get current machine IP, MAC and DNS servers.",
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/ajv"
+  },
+  "dependencies": {
+    "fast-deep-equal": "^3.1.1",
+    "fast-json-stable-stringify": "^2.0.0",
+    "json-schema-traverse": "^0.4.1",
+    "uri-js": "^4.2.2"
+  },
+  "description": "Another JSON Schema Validator",
   "devDependencies": {
-    "@types/node": "^12.7.2",
-    "beautify-benchmark": "*",
-    "benchmark": "*",
-    "contributors": "*",
-    "istanbul": "*",
-    "matcha": "*",
-    "mm": "*",
-    "mocha": "*",
-    "pedding": "*",
-    "runscript": "^1.4.0",
-    "should": "*",
-    "typescript": "^3.5.3"
-  },
-  "engines": {
-    "node": ">= 0.12.0"
+    "ajv-async": "^1.0.0",
+    "bluebird": "^3.5.3",
+    "brfs": "^2.0.0",
+    "browserify": "^16.2.0",
+    "chai": "^4.0.1",
+    "coveralls": "^3.0.1",
+    "del-cli": "^3.0.0",
+    "dot": "^1.0.3",
+    "eslint": "^7.3.1",
+    "gh-pages-generator": "^0.2.3",
+    "glob": "^7.0.0",
+    "if-node-version": "^1.0.0",
+    "js-beautify": "^1.7.3",
+    "jshint": "^2.10.2",
+    "json-schema-test": "^2.0.0",
+    "karma": "^5.0.0",
+    "karma-chrome-launcher": "^3.0.0",
+    "karma-mocha": "^2.0.0",
+    "karma-sauce-launcher": "^4.1.3",
+    "mocha": "^8.0.1",
+    "nyc": "^15.0.0",
+    "pre-commit": "^1.1.1",
+    "require-globify": "^1.3.0",
+    "typescript": "^3.9.5",
+    "uglify-js": "^3.6.9",
+    "watch": "^1.0.0"
   },
   "files": [
-    "lib"
+    "lib/",
+    "dist/",
+    "scripts/",
+    "LICENSE",
+    ".tonic_example.js"
   ],
-  "homepage": "https://github.com/node-modules/address#readme",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/epoberezkin"
+  },
+  "homepage": "https://github.com/ajv-validator/ajv",
   "keywords": [
-    "address",
-    "ip",
-    "ipv4",
-    "mac"
+    "JSON",
+    "schema",
+    "validator",
+    "validation",
+    "jsonschema",
+    "json-schema",
+    "json-schema-validator",
+    "json-schema-validation"
   ],
   "license": "MIT",
-  "main": "lib/address.js",
-  "name": "address",
+  "main": "lib/ajv.js",
+  "name": "ajv",
+  "nyc": {
+    "exclude": [
+      "**/spec/**",
+      "node_modules"
+    ],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
+  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/node-modules/address.git"
+    "url": "git+https://github.com/ajv-validator/ajv.git"
   },
   "scripts": {
-    "autod": "autod -w --prefix '^'",
-    "benchmark": "matcha",
-    "contributors": "contributors -f plain -o AUTHORS",
-    "test": "mocha --check-leaks -R spec -t 5000 test/*.test.js",
-    "test-cov": "istanbul cover node_modules/.bin/_mocha -- --check-leaks -t 5000 test/*.test.js",
-    "test-travis": "istanbul cover node_modules/.bin/_mocha --report lcovonly -- --check-leaks -t 5000 test/*.test.js"
+    "build": "del-cli lib/dotjs/*.js \"!lib/dotjs/index.js\" && node scripts/compile-dots.js",
+    "bundle": "del-cli dist && node ./scripts/bundle.js . Ajv pure_getters",
+    "bundle-beautify": "node ./scripts/bundle.js js-beautify",
+    "eslint": "eslint lib/{compile/,}*.js spec/{**/,}*.js scripts --ignore-pattern spec/JSON-Schema-Test-Suite",
+    "jshint": "jshint lib/{compile/,}*.js",
+    "lint": "npm run jshint && npm run eslint",
+    "prepublish": "npm run build && npm run bundle",
+    "test": "npm run lint && npm run build && npm run test-all",
+    "test-all": "npm run test-cov && if-node-version 10 npm run test-browser",
+    "test-browser": "del-cli .browser && npm run bundle && scripts/prepare-tests && npm run test-karma",
+    "test-cov": "nyc npm run test-spec",
+    "test-debug": "npm run test-spec -- --inspect-brk",
+    "test-fast": "AJV_FAST_TEST=true npm run test-spec",
+    "test-karma": "karma start",
+    "test-spec": "mocha spec/{**/,}*.spec.js -R spec",
+    "test-ts": "tsc --target ES5 --noImplicitAny --noEmit spec/typescript/index.ts",
+    "watch": "watch \"npm run build\" ./lib/dot"
   },
-  "types": "lib/address.d.ts",
-  "version": "1.1.2"
+  "tonicExampleFilename": ".tonic_example.js",
+  "typings": "lib/ajv.d.ts",
+  "version": "6.12.3"
 }
